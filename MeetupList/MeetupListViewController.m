@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 Jessie Serrino. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MeetupListViewController.h"
 
-@interface ViewController ()
+@interface MeetupListViewController ()
 
 @end
 
-@implementation ViewController
+@implementation MeetupListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

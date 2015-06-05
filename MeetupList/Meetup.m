@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  Models.m
 //  MeetupList
 //
 //  Created by Jessie Serrino on 6/4/15.
 //  Copyright (c) 2015 Jessie Serrino. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "Meetup.h"
 
-@interface ViewController : UIViewController
-
+@implementation Meetup
 
 @end
-
