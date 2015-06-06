@@ -14,6 +14,7 @@
 		916FEFF11B2261F800B3BB6F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916FEFEF1B2261F800B3BB6F /* LaunchScreen.xib */; };
 		916FEFFD1B2261F800B3BB6F /* MeetupCodeChallengeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 916FEFFC1B2261F800B3BB6F /* MeetupCodeChallengeTests.m */; };
 		916FF0071B22620300B3BB6F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916FF0061B22620300B3BB6F /* CoreLocation.framework */; };
+		9177A7361B2372C500F37E2F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9177A7351B2372C500F37E2F /* Images.xcassets */; };
 		9183C3221B236EEA0082C93C /* DataRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 9183C3121B236EEA0082C93C /* DataRequester.m */; };
 		9183C3241B236EEA0082C93C /* Meetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 9183C3151B236EEA0082C93C /* Meetup.m */; };
 		9183C3251B236EEA0082C93C /* MeetupInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9183C3171B236EEA0082C93C /* MeetupInteractor.m */; };
@@ -48,6 +49,7 @@
 		916FEFFB1B2261F800B3BB6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		916FEFFC1B2261F800B3BB6F /* MeetupCodeChallengeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetupCodeChallengeTests.m; sourceTree = "<group>"; };
 		916FF0061B22620300B3BB6F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9177A7351B2372C500F37E2F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9183C3111B236EEA0082C93C /* DataRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataRequester.h; sourceTree = "<group>"; };
 		9183C3121B236EEA0082C93C /* DataRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataRequester.m; sourceTree = "<group>"; };
 		9183C3141B236EEA0082C93C /* Meetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meetup.h; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				9183C3331B2370F60082C93C /* View Controllers */,
 				9183C3301B2370CF0082C93C /* Cocoa Extensions */,
 				916FEFE01B2261F700B3BB6F /* Supporting Files */,
+				9177A7351B2372C500F37E2F /* Images.xcassets */,
 			);
 			path = MeetupCodeChallenge;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9177A7361B2372C500F37E2F /* Images.xcassets in Resources */,
 				916FEFEC1B2261F700B3BB6F /* Main.storyboard in Resources */,
 				916FEFF11B2261F800B3BB6F /* LaunchScreen.xib in Resources */,
 			);

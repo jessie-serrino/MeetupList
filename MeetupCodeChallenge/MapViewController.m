@@ -17,7 +17,7 @@ static NSString * const SegueToMeetupList = @"SegueToMeetupList";
 
 @property (nonatomic, strong) CLLocationManager *manager;
 @property (nonatomic, strong) IBOutlet MKMapView *map;
-@property (nonatomic, weak)   IBOutlet UIBarButtonItem *doneButton;
+
 @property (nonatomic, weak)   IBOutlet UIView *spinningWheelView;
 
 @end
@@ -52,6 +52,5 @@ static NSString * const SegueToMeetupList = @"SegueToMeetupList";
         
     }];
 }
-
 
 @end
