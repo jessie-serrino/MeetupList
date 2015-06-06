@@ -9,6 +9,7 @@
 #import "NSURL+Parameters.h"
 
 @implementation NSURL (Parameters)
+
 + (NSURL *) urlWithBaseString: (NSString *) baseURLString parameters: (NSDictionary *) parameters
 {
     NSString *trimmedBaseURL = [baseURLString stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];

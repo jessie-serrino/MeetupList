@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AppDelegate.h
 //  MeetupCodeChallenge
 //
 //  Created by Jessie Serrino on 6/5/15.
@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MapViewController : UIViewController
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
 
 
 @end

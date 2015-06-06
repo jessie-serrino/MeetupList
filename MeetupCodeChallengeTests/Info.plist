@@ -18,13 +18,7 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>NSLocationUsageDescription</key>
-	<string>To show you cool things nearby</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>NSLocationAlwaysUsageDescription - 2</key>
-	<string>This app needs your location so we can provide you with information about local meetups.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Wow this is cool</string>
 </dict>
 </plist>

@@ -7,16 +7,18 @@
 //
 
 #import "MapViewController.h"
-#import "MeetupProvider.h"
 #import <CoreLocation/CoreLocation.h>
+
+#import "MeetupProvider.h"
 
 static NSString * const SegueToMeetupList = @"SegueToMeetupList";
 
 @interface MapViewController () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) CLLocationManager *manager;
-@property (nonatomic, weak)   UIBarButtonItem *doneButton;
-@property (nonatomic, weak)   MKMapView *map;
+@property (nonatomic, strong) IBOutlet MKMapView *map;
+@property (nonatomic, weak)   IBOutlet UIBarButtonItem *doneButton;
+@property (nonatomic, weak)   IBOutlet UIView *spinningWheelView;
 
 @end
 
@@ -39,14 +41,13 @@ static NSString * const SegueToMeetupList = @"SegueToMeetupList";
 
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
     sender.enabled = NO;
-//    self.spinningWheelView.hidden = NO;
     
     __weak __typeof(self)weakSelf = self;
     [[MeetupProvider sharedProvider] loadMeetupsFromCoordinate:self.map.centerCoordinate completion:^{
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         [strongSelf performSegueWithIdentifier:SegueToMeetupList sender:strongSelf];
         sender.enabled = YES;
-//        strongSelf.spinningWheelView.hidden = YES;
+        strongSelf.spinningWheelView.hidden = YES;
     } error:^(NSError * error) {
         
     }];

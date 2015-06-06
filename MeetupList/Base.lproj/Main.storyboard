@@ -27,13 +27,17 @@
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TYs-XS-a6e">
-                                <rect key="frame" x="150" y="297.5" width="114" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pin" translatesAutoresizingMaskIntoConstraints="NO" id="TYs-XS-a6e">
+                                <rect key="frame" x="198" y="385" width="18" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="114" id="EH4-iv-FO2"/>
-                                    <constraint firstAttribute="height" constant="128" id="eIV-gN-rSW"/>
+                                    <constraint firstAttribute="width" constant="18" id="EH4-iv-FO2"/>
+                                    <constraint firstAttribute="height" constant="40" id="eIV-gN-rSW"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hVo-D3-bmG">
+                                <rect key="frame" x="189" y="0.0" width="37" height="37"/>
+                                <color key="color" red="0.2274509804" green="0.51372549020000002" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -50,11 +54,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Find Yourself" id="Mi4-wR-Bxf">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="7lY-GA-5d6"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="7lY-GA-5d6">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="vXZ-lx-hvc" id="Kfu-xG-aCU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <segue destination="0Io-zq-8AI" kind="show" id="J5l-u3-deQ"/>
+                        <outlet property="doneButton" destination="7lY-GA-5d6" id="rxi-eY-PV1"/>
+                        <outlet property="map" destination="Cgq-cj-fCb" id="cjO-tK-qye"/>
+                        <segue destination="0Io-zq-8AI" kind="show" identifier="SegueToMeetupList" id="J5l-u3-deQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -64,7 +74,7 @@
         <!--Meetups In Your Area-->
         <scene sceneID="ntF-Of-aXj">
             <objects>
-                <tableViewController id="0Io-zq-8AI" customClass="MeetupListViewController" sceneMemberID="viewController">
+                <tableViewController id="0Io-zq-8AI" customClass="MeetupTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uXT-W6-awM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,7 +92,9 @@
                             <outlet property="delegate" destination="0Io-zq-8AI" id="KXM-QK-4Jy"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Meetups In Your Area" id="Bob-Qz-rcH"/>
+                    <navigationItem key="navigationItem" title="Meetups In Your Area" id="Bob-Qz-rcH">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="DUd-02-sH2"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XBJ-g4-v4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -109,4 +121,7 @@
             <point key="canvasLocation" x="660" y="399"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Pin" width="15" height="39"/>
+    </resources>
 </document>

@@ -19,7 +19,7 @@
             completionHandler:^(NSData *data,
                                 NSURLResponse *response,
                                 NSError *error) {
-                if(error)
+                if(error || !data)
                     errorBlock(error);
                 else
                     completionBlock(data);
