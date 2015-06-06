@@ -19,18 +19,18 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Lfp-FZ-iCx">
-                                <rect key="frame" x="16" y="145" width="382" height="571"/>
+                                <rect key="frame" x="16" y="120" width="382" height="596"/>
                             </mapView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pin" translatesAutoresizingMaskIntoConstraints="NO" id="teu-Ee-lc8">
-                                <rect key="frame" x="197" y="390" width="20" height="40"/>
+                                <rect key="frame" x="197" y="378" width="20" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="9Vq-z0-YhK"/>
                                     <constraint firstAttribute="height" constant="40" id="LQr-Im-x41"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We promise that we won't do anything weird with your location information." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufj-Pq-dLT">
-                                <rect key="frame" x="16" y="84" width="382" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="16" y="74" width="382" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -45,8 +45,8 @@
                             <constraint firstAttribute="trailingMargin" secondItem="ufj-Pq-dLT" secondAttribute="trailing" id="awg-TJ-YIT"/>
                             <constraint firstItem="teu-Ee-lc8" firstAttribute="top" secondItem="Lfp-FZ-iCx" secondAttribute="top" id="d4U-oL-clf"/>
                             <constraint firstItem="ufj-Pq-dLT" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="qEb-aI-Yy1"/>
-                            <constraint firstItem="Lfp-FZ-iCx" firstAttribute="top" secondItem="ufj-Pq-dLT" secondAttribute="bottom" constant="20" id="shm-5E-m69"/>
-                            <constraint firstItem="ufj-Pq-dLT" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="udf-U4-CaQ"/>
+                            <constraint firstItem="Lfp-FZ-iCx" firstAttribute="top" secondItem="ufj-Pq-dLT" secondAttribute="bottom" constant="10" id="shm-5E-m69"/>
+                            <constraint firstItem="ufj-Pq-dLT" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="udf-U4-CaQ"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -63,12 +63,13 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="map" destination="Lfp-FZ-iCx" id="Epp-Dw-xfL"/>
                         <segue destination="S8i-Ik-HWE" kind="show" identifier="SegueToMeetupList" id="jd2-h9-v85"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1157" y="399"/>
+            <point key="canvasLocation" x="1081" y="399"/>
         </scene>
         <!--Meetup Table View Controller-->
         <scene sceneID="MD1-Xl-2k3">
@@ -92,10 +93,32 @@
                         </connections>
                     </tableView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <segue destination="Edf-ws-HJ6" kind="show" identifier="SegueToDetail" id="qqC-Se-Bcn"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ww-6S-spQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1797" y="399"/>
+            <point key="canvasLocation" x="1783" y="399"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1xf-7D-zBK">
+            <objects>
+                <viewController id="Edf-ws-HJ6" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dg6-pc-VcO"/>
+                        <viewControllerLayoutGuide type="bottom" id="kCZ-Ze-6wx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cSj-RE-mCj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GIU-ZO-grT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2278" y="399"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qlF-g0-dlC">

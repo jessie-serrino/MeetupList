@@ -9,6 +9,8 @@
 #import "MeetupTableViewController.h"
 #import "MeetupProvider.h"
 
+static NSString * const SegueToDetail = @"SegueToDetail";
+
 @interface MeetupTableViewController ()
 @property (nonatomic, weak) MeetupProvider *provider;
 @end
@@ -60,6 +62,13 @@
     return cell;
 }
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [self performSegueWithIdentifier:SegueToDetail sender:self];
+    
+}
 
 /*
 // Override to support conditional editing of the table view.
