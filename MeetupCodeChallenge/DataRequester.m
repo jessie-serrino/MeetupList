@@ -6,27 +6,24 @@
 //  Copyright (c) 2015 Jessie Serrino. All rights reserved.
 //
 
+#import "AFNetworking/AFNetworking.h"
 #import "DataRequester.h"
 #import "NSURL+Parameters.h"
 
 
 @implementation DataRequester
 
-+ (void) requestDataFromBaseURLString:(NSString *) baseURLString parameters:(NSDictionary *)parameters completion:(DataBlock)completionBlock error:(ErrorBlock)errorBlock
+- (void) requestDataFromBaseURLString:(NSString *) baseURLString parameters:(NSDictionary *)parameters completion:(DataBlock)completionBlock error:(ErrorBlock)errorBlock
 {
-    NSURLSession *session = [NSURLSession sharedSession];
-    [[session dataTaskWithURL:[NSURL urlWithBaseString:baseURLString parameters:parameters]
-            completionHandler:^(NSData *data,
-                                NSURLResponse *response,
-                                NSError *error) {
-                if(error || !data)
-                    errorBlock(error);
-                else
-                    completionBlock(data);
-                
-            }] resume];
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString: baseURLString ]];
+    
+    [manager GET:@"open_events"
+      parameters:parameters
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             completionBlock(responseObject);
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             errorBlock(error);
+         }];
 }
-
-
 
 @end

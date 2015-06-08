@@ -11,6 +11,6 @@
 
 @interface MeetupInteractor : NSObject
 
-+ (NSArray *) meetupListWithData: (NSData *) data;
++ (NSArray *) meetupListWithDictionary: (NSDictionary *) meetupsDictionary;
 
 @end

@@ -10,7 +10,7 @@
 
 @implementation Venue
 
-- (instancetype)initWithCoordinates: (CLLocationCoordinate2D) coordinates
+- (instancetype)initWithCoordinate: (CLLocationCoordinate2D) coordinates
                               place: (NSString *) placeName
                                city: (NSString *) cityName
                               state: (NSString *) state
@@ -18,7 +18,7 @@
 {
     self = [super init];
     if(self)    {
-        _coordinates = coordinates;
+        _coordinate = coordinates;
         _placeName = placeName;
         _cityName = cityName;
         _stateName = state;

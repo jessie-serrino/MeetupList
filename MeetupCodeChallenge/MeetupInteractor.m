@@ -11,13 +11,11 @@
 
 @implementation MeetupInteractor
 
-+ (NSArray *) meetupListWithData: (NSData *) data
++ (NSArray *) meetupListWithDictionary: (NSDictionary *) meetupsDictionary
 {
-    NSError *error;
-    NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONWritingPrettyPrinted error:&error];
     NSArray *meetups;
-    if(dataDictionary[@"results"]){
-        meetups = [MeetupInteractor arrayOfMeetupsFromArray: dataDictionary[@"results"]];
+    if(meetupsDictionary[@"results"]){
+        meetups = [MeetupInteractor arrayOfMeetupsFromArray: meetupsDictionary[@"results"]];
     }
     return meetups;
 }
@@ -32,30 +30,22 @@
 }
 
 
-//_meetupName = meetupName;
-//_groupName = groupName;
-//_meetupDescription = description;
-//_meetupURL = url;
-//_eventDate = actualDate;
-//_creationDate = creationDate;
-//_rsvpCount = rsvpCount;
-//_distance = distance;
-//_venue = venue;
-
 + (Meetup *) meetupWithDictionary: (NSDictionary *) meetupDictionary
 {
-    NSString *name = meetupDictionary[@"name"]; //
-    NSString *groupName = meetupDictionary[@"group"][@"name"]; //
-    NSString *description = meetupDictionary[@"description"]; //
+    NSString *name = meetupDictionary[@"name"];
+    NSString *groupName = meetupDictionary[@"group"][@"name"];
+    NSString *description = meetupDictionary[@"description"];
 
-    NSString *urlString = meetupDictionary[@"event_url"]; //
+    NSString *urlString = meetupDictionary[@"event_url"];
     NSURL *url = [NSURL URLWithString:urlString]; //
     
-    NSUInteger eventDateTime = [meetupDictionary[@"time"] integerValue];
-    NSDate *eventDate = [NSDate dateWithTimeIntervalSince1970:(eventDateTime / 1000)];
+    NSNumber *eventDateTime = meetupDictionary[@"time"];
+    long long epochEventTime = [eventDateTime longLongValue] / 1000;
+    NSDate *eventDate = [NSDate dateWithTimeIntervalSince1970:epochEventTime];
     
-    NSUInteger creationDateTime = [meetupDictionary[@"created"] integerValue];
-    NSDate *creationDate = [NSDate dateWithTimeIntervalSince1970:(creationDateTime / 1000)];
+    NSNumber *creationDateTime = meetupDictionary[@"created"];
+    long long epochCreationTime = [creationDateTime longLongValue] / 1000;
+    NSDate *creationDate = [NSDate dateWithTimeIntervalSince1970:epochCreationTime];
     
     NSUInteger rsvpCount = [meetupDictionary[@"yes_rsvp_count"] integerValue] / 1000;
     float distance = [meetupDictionary[@"distance"] floatValue];
@@ -74,12 +64,6 @@
 }
 
 
-//_coordinates = coordinates;
-//_placeName = placeName;
-//_cityName = cityName;
-//_stateName = state;
-//_address = address;
-
 + (Venue *) venueWithDictionary: (NSDictionary *) venueDictionary
 {
     float latitude = [venueDictionary[@"lat"] doubleValue];
@@ -91,7 +75,7 @@
     NSString *stateName = venueDictionary[@"state"];
     NSString *address = venueDictionary[@"address_1"];
 
-    return [[Venue alloc] initWithCoordinates:coordinates
+    return [[Venue alloc] initWithCoordinate:coordinates
                                         place:placeName
                                          city:cityName
                                         state:stateName

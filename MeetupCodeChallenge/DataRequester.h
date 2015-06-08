@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^DataBlock)(NSData *);
+typedef void (^DataBlock)(NSDictionary *);
 typedef void (^ErrorBlock)(NSError *);
 
 @interface DataRequester : NSObject
 
-+ (void) requestDataFromBaseURLString:(NSString *) baseURLString
+- (void) requestDataFromBaseURLString:(NSString *) baseURLString
                      parameters: (NSDictionary *) parameters
                      completion: (DataBlock) completionBlock error: (ErrorBlock) errorBlock;
 

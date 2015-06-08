@@ -9,13 +9,16 @@
 #import "MeetupProvider.h"
 #import "MeetupInteractor.h"
 
-static NSString * const MeetupURLString = @"https://api.meetup.com/2/open_events.json";
+static NSString * const MeetupURLString = @"https://api.meetup.com/2";
 static NSString * const APIKey = @"785132125b14757117481f145521774";
 static NSString * const TopicString = @"technology";
 
 
+
+
 @interface MeetupProvider()
-@property (nonatomic, strong) NSMutableArray *meetups;
+@property (nonatomic, strong) NSArray *meetups;
+@property (nonatomic) NSUInteger selectedMeetupIndex;
 @end
 
 @implementation MeetupProvider
@@ -35,40 +38,50 @@ static NSString * const TopicString = @"technology";
     return self.meetups.count;
 }
 
-- (NSMutableArray *) meetups
-{
-    if(!_meetups){
-        _meetups = [[NSMutableArray alloc] init];
-    }
-    return _meetups;
-}
-
 - (Meetup *) meetupAtIndex: (NSUInteger) index
 {
     return self.meetups[index];
 }
 
-- (void) loadMeetupsFromCoordinate: (CLLocationCoordinate2D) coordinate
-                        completion: (CompletionBlock) completionBlock
-                             error: (ErrorBlock) errorBlock;
+- (void) selectMeetupAtIndex: (NSUInteger) index
+{
+    self.selectedMeetupIndex = index;
+}
+
+- (Meetup *) selectedMeetup
+{
+    return [self.meetups objectAtIndex:self.selectedMeetupIndex];
+}
+
+- (NSDictionary *) parameterDictionaryWithCoordiante: (CLLocationCoordinate2D) coordinate
 {
     NSString *latitudeString = [NSString stringWithFormat:@"%f", coordinate.latitude];
     NSString *longitudeString = [NSString stringWithFormat:@"%f", coordinate.longitude];
-
-    NSDictionary *parameters = @{@"lat":latitudeString,
+    
+    return @{@"lat":latitudeString,
                                  @"lon":longitudeString,
                                  @"topic":TopicString,
                                  @"key": APIKey};
-    __weak __typeof(self)weakSelf = self;
+}
+
+- (void) loadMeetupsFromCoordinate: (CLLocationCoordinate2D) coordinate
+                        completion: (CompletionBlock) completionBlock
+                             error: (ReportErrorBlock) errorBlock;
+{
+    NSDictionary *parameters = [self parameterDictionaryWithCoordiante:coordinate];
     
-    [DataRequester requestDataFromBaseURLString:MeetupURLString
+    __weak __typeof(self)weakSelf = self;
+    [self requestDataFromBaseURLString:MeetupURLString
                                      parameters:parameters
-                                     completion:^(NSData * data) {
+                                     completion:^(NSDictionary * dataDictionary) {
                                          __strong __typeof(weakSelf)strongSelf = weakSelf;
-                                        [strongSelf.meetups addObjectsFromArray: [MeetupInteractor meetupListWithData:data]];
-                                        completionBlock();
+                                        strongSelf.meetups  =[MeetupInteractor meetupListWithDictionary:dataDictionary];
+                                         if(strongSelf.meetups.count)
+                                             completionBlock();
+                                         else
+                                             errorBlock(@"No Results Found");
                                      } error:^(NSError *error) {
-                                         errorBlock(error);
+                                         errorBlock(@"Unable to Access the Server.");
                                      }];
 }
 

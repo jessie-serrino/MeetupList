@@ -12,18 +12,22 @@
 #import "Meetup.h"
 #import "DataRequester.h"
 
+typedef void (^ReportErrorBlock)(NSString *);
 typedef void (^CompletionBlock)();
 
 
-@interface MeetupProvider : NSObject
+@interface MeetupProvider : DataRequester
 
 + (instancetype) sharedProvider;
 
 - (NSUInteger) meetupCount;
 - (Meetup *) meetupAtIndex: (NSUInteger) index;
 
+- (Meetup *) selectedMeetup;
+- (void) selectMeetupAtIndex: (NSUInteger) index;
+
 - (void) loadMeetupsFromCoordinate: (CLLocationCoordinate2D) coordinate
                         completion: (CompletionBlock) completionBlock
-                             error: (ErrorBlock) errorBlock;
+                             error: (ReportErrorBlock) errorBlock;
 
 @end

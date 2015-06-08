@@ -6,11 +6,14 @@
 //  Copyright (c) 2015 Jessie Serrino. All rights reserved.
 //
 
-#import "MapViewController.h"
-#import "MKMapView+Center.h"
 #import <CoreLocation/CoreLocation.h>
 
+#import "MapViewController.h"
+#import "MKMapView+Center.h"
 #import "MeetupProvider.h"
+
+
+
 
 static NSString * const SegueToMeetupList = @"SegueToMeetupList";
 
@@ -19,10 +22,7 @@ static NSString * const SegueToMeetupList = @"SegueToMeetupList";
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (strong, nonatomic) IBOutlet MKMapView *map;
 @property (nonatomic)         BOOL centeredMap;
-
-
-
-@property (nonatomic, weak)   IBOutlet UIView *spinningWheelView;
+@property (nonatomic, weak)   UIView *spinningWheelView;
 
 @end
 
@@ -54,14 +54,7 @@ static NSString * const SegueToMeetupList = @"SegueToMeetupList";
     self.locationManager  = [[CLLocationManager alloc] init];
     [self.locationManager requestAlwaysAuthorization];
     self.locationManager.delegate = self;
-}
-
-- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
-{
-    if(status == kCLAuthorizationStatusAuthorizedAlways)
-    {
-        [self.locationManager startUpdatingLocation];
-    }
+    [self.locationManager startUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
@@ -87,13 +80,35 @@ static NSString * const SegueToMeetupList = @"SegueToMeetupList";
     __weak __typeof(self)weakSelf = self;
     [[MeetupProvider sharedProvider] loadMeetupsFromCoordinate:self.map.centerCoordinate completion:^{
         __strong __typeof(weakSelf)strongSelf = weakSelf;
-        [strongSelf performSegueWithIdentifier:SegueToMeetupList sender:strongSelf];
-        sender.enabled = YES;
-        [self loadingScreenActive:NO];
-    } error:^(NSError * error) {
-        [self loadingScreenActive:NO];
+        [strongSelf endQueryWithSuccess:sender];
+
+    } error:^(NSString * error) {
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        [strongSelf endQueryWithFailure:sender description:error];
         
     }];
+}
+
+- (void) endQueryWithSuccess: (UIBarButtonItem *) sender
+{
+    [self endQuery:sender];
+    [self performSegueWithIdentifier: SegueToMeetupList sender:self];
+}
+
+- (void) endQueryWithFailure: (UIBarButtonItem *) sender description: (NSString *) description
+{
+    [self endQuery:sender];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                   message:description
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void) endQuery: (UIBarButtonItem *) sender
+{
+    sender.enabled = YES;
+    [self loadingScreenActive:NO];
 }
 
 @end

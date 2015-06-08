@@ -11,7 +11,7 @@
 
 @interface Venue : NSObject
 
-@property (nonatomic) CLLocationCoordinate2D coordinates;
+@property (nonatomic) CLLocationCoordinate2D coordinate;
 
 @property (nonatomic, strong) NSString *placeName;
 
@@ -19,7 +19,7 @@
 @property (nonatomic, strong) NSString * stateName;
 @property (nonatomic, strong) NSString *address;
 
-- (instancetype)initWithCoordinates: (CLLocationCoordinate2D) coordinates
+- (instancetype)initWithCoordinate: (CLLocationCoordinate2D) coordinates
                               place: (NSString *) placeName
                                city: (NSString *) cityName
                               state: (NSString *) state

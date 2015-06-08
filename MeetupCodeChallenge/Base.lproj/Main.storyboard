@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -18,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Lfp-FZ-iCx">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lfp-FZ-iCx">
                                 <rect key="frame" x="16" y="120" width="382" height="596"/>
                             </mapView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pin" translatesAutoresizingMaskIntoConstraints="NO" id="teu-Ee-lc8">
@@ -30,7 +31,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We promise that we won't do anything weird with your location information." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufj-Pq-dLT">
                                 <rect key="frame" x="16" y="74" width="382" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -75,16 +76,52 @@
         <scene sceneID="MD1-Xl-2k3">
             <objects>
                 <tableViewController id="S8i-Ik-HWE" customClass="MeetupTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="w9O-lF-cJt">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="155" sectionHeaderHeight="22" sectionFooterHeight="22" id="w9O-lF-cJt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="96G-HS-KBI">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="MeetupTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="MeetupTableViewCell" rowHeight="155" id="96G-HS-KBI" customClass="MeetupTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="96G-HS-KBI" id="PEZ-QT-J7l">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meetup Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDO-nu-dLo">
+                                            <rect key="frame" x="28" y="57" width="358" height="20.5"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meetup Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krx-ee-Bgz">
+                                            <rect key="frame" x="28" y="85" width="358" height="20.5"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Meetup Name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykQ-fZ-cBl">
+                                            <rect key="frame" x="28" y="20" width="358" height="29"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="krx-ee-Bgz" firstAttribute="leading" secondItem="EDO-nu-dLo" secondAttribute="leading" id="9b5-il-xLP"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ykQ-fZ-cBl" secondAttribute="trailing" constant="20" id="AQW-Bh-kES"/>
+                                        <constraint firstItem="krx-ee-Bgz" firstAttribute="top" secondItem="EDO-nu-dLo" secondAttribute="bottom" constant="8" id="IBJ-A4-fIc"/>
+                                        <constraint firstItem="ykQ-fZ-cBl" firstAttribute="top" secondItem="PEZ-QT-J7l" secondAttribute="topMargin" constant="10" id="Kjq-NN-2PR"/>
+                                        <constraint firstItem="krx-ee-Bgz" firstAttribute="trailing" secondItem="EDO-nu-dLo" secondAttribute="trailing" id="OC6-uO-5Xn"/>
+                                        <constraint firstItem="EDO-nu-dLo" firstAttribute="top" secondItem="ykQ-fZ-cBl" secondAttribute="bottom" constant="10" id="SMP-j2-6l2"/>
+                                        <constraint firstItem="EDO-nu-dLo" firstAttribute="trailing" secondItem="ykQ-fZ-cBl" secondAttribute="trailing" id="deE-fx-mAJ"/>
+                                        <constraint firstItem="EDO-nu-dLo" firstAttribute="leading" secondItem="ykQ-fZ-cBl" secondAttribute="leading" id="hCO-qC-U0D"/>
+                                        <constraint firstItem="ykQ-fZ-cBl" firstAttribute="leading" secondItem="PEZ-QT-J7l" secondAttribute="leadingMargin" constant="20" id="wdq-z4-nIs"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="distanceLabel" destination="krx-ee-Bgz" id="fy5-Al-Tnw"/>
+                                    <outlet property="nameLabel" destination="ykQ-fZ-cBl" id="eT2-GF-9dI"/>
+                                    <outlet property="timeLabel" destination="EDO-nu-dLo" id="pmX-1o-bCc"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -101,10 +138,10 @@
             </objects>
             <point key="canvasLocation" x="1783" y="399"/>
         </scene>
-        <!--View Controller-->
+        <!--Meetup Detail View Controller-->
         <scene sceneID="1xf-7D-zBK">
             <objects>
-                <viewController id="Edf-ws-HJ6" sceneMemberID="viewController">
+                <viewController id="Edf-ws-HJ6" customClass="MeetupDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dg6-pc-VcO"/>
                         <viewControllerLayoutGuide type="bottom" id="kCZ-Ze-6wx"/>
@@ -112,9 +149,104 @@
                     <view key="view" contentMode="scaleToFill" id="cSj-RE-mCj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YYl-Wr-U3F">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meetup Group" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNk-WL-D96">
+                                        <rect key="frame" x="20" y="61" width="374" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1wy-1W-dwI">
+                                        <rect key="frame" x="20" y="95" width="374" height="30"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" title="Meetup URL">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="urlButtonPressed:" destination="Edf-ws-HJ6" eventType="touchUpInside" id="Gtl-Gr-Gnq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="cQY-7N-XVP">
+                                        <rect key="frame" x="20" y="199" width="374" height="30"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" title="Map Directions">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addressButtonPressed:" destination="Edf-ws-HJ6" eventType="touchUpInside" id="Gdd-Vd-ol3"/>
+                                        </connections>
+                                    </button>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8a-ee-zof">
+                                        <rect key="frame" x="20" y="239" width="374" height="374"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="q8a-ee-zof" secondAttribute="height" multiplier="1:1" id="g1j-Vo-Rf7"/>
+                                        </constraints>
+                                    </mapView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Brv-9J-ZTC">
+                                        <rect key="frame" x="20" y="161" width="60" height="18"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Meetup Name" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEY-qZ-Kgb">
+                                        <rect key="frame" x="20" y="20" width="374" height="31.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="26"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Meetup Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALb-q3-lUb">
+                                        <rect key="frame" x="20" y="135" width="90" height="18"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="1wy-1W-dwI" firstAttribute="trailing" secondItem="mEY-qZ-Kgb" secondAttribute="trailing" id="2pt-JG-pZx"/>
+                                    <constraint firstItem="cQY-7N-XVP" firstAttribute="top" secondItem="Brv-9J-ZTC" secondAttribute="bottom" constant="20" id="4Rh-Uy-Dcm"/>
+                                    <constraint firstItem="q8a-ee-zof" firstAttribute="top" secondItem="cQY-7N-XVP" secondAttribute="bottom" constant="10" id="6UK-Y0-Jh5"/>
+                                    <constraint firstItem="Brv-9J-ZTC" firstAttribute="top" secondItem="ALb-q3-lUb" secondAttribute="bottom" constant="8" id="7IF-F2-Onl"/>
+                                    <constraint firstItem="hNk-WL-D96" firstAttribute="top" secondItem="mEY-qZ-Kgb" secondAttribute="bottom" constant="10" id="BDF-Yu-DLF"/>
+                                    <constraint firstItem="mEY-qZ-Kgb" firstAttribute="top" secondItem="YYl-Wr-U3F" secondAttribute="top" constant="20" id="BqL-OW-bkI"/>
+                                    <constraint firstItem="q8a-ee-zof" firstAttribute="leading" secondItem="mEY-qZ-Kgb" secondAttribute="leading" id="C9T-bk-ns4"/>
+                                    <constraint firstItem="mEY-qZ-Kgb" firstAttribute="leading" secondItem="hNk-WL-D96" secondAttribute="leading" id="FCb-mf-iJL"/>
+                                    <constraint firstItem="cQY-7N-XVP" firstAttribute="leading" secondItem="Brv-9J-ZTC" secondAttribute="leading" id="L7S-NT-bmM"/>
+                                    <constraint firstItem="ALb-q3-lUb" firstAttribute="top" secondItem="1wy-1W-dwI" secondAttribute="bottom" constant="10" id="SCx-9t-qV4"/>
+                                    <constraint firstItem="cQY-7N-XVP" firstAttribute="trailing" secondItem="mEY-qZ-Kgb" secondAttribute="trailing" id="XH9-dZ-DLH"/>
+                                    <constraint firstItem="1wy-1W-dwI" firstAttribute="leading" secondItem="ALb-q3-lUb" secondAttribute="leading" id="bac-DI-BPD"/>
+                                    <constraint firstItem="mEY-qZ-Kgb" firstAttribute="leading" secondItem="YYl-Wr-U3F" secondAttribute="leading" constant="20" id="blo-7e-6g6"/>
+                                    <constraint firstAttribute="bottom" secondItem="q8a-ee-zof" secondAttribute="bottom" constant="20" id="chF-Qm-ecv"/>
+                                    <constraint firstItem="mEY-qZ-Kgb" firstAttribute="trailing" secondItem="hNk-WL-D96" secondAttribute="trailing" id="dJf-G6-1Sa"/>
+                                    <constraint firstItem="Brv-9J-ZTC" firstAttribute="leading" secondItem="ALb-q3-lUb" secondAttribute="leading" id="eeB-ZS-8gp"/>
+                                    <constraint firstAttribute="trailing" secondItem="mEY-qZ-Kgb" secondAttribute="trailing" constant="20" id="f3i-3w-lq8"/>
+                                    <constraint firstItem="mEY-qZ-Kgb" firstAttribute="width" secondItem="YYl-Wr-U3F" secondAttribute="width" constant="-40" id="fWj-fs-XHM"/>
+                                    <constraint firstItem="q8a-ee-zof" firstAttribute="trailing" secondItem="mEY-qZ-Kgb" secondAttribute="trailing" id="iYk-lW-LUz"/>
+                                    <constraint firstItem="hNk-WL-D96" firstAttribute="leading" secondItem="1wy-1W-dwI" secondAttribute="leading" id="rZW-u6-9GB"/>
+                                    <constraint firstItem="1wy-1W-dwI" firstAttribute="top" secondItem="hNk-WL-D96" secondAttribute="bottom" constant="10" id="wyz-7w-jmt"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YYl-Wr-U3F" firstAttribute="top" secondItem="dg6-pc-VcO" secondAttribute="top" id="Vc3-2y-jB2"/>
+                            <constraint firstAttribute="trailing" secondItem="YYl-Wr-U3F" secondAttribute="trailing" id="df2-vF-uT0"/>
+                            <constraint firstItem="kCZ-Ze-6wx" firstAttribute="top" secondItem="YYl-Wr-U3F" secondAttribute="bottom" id="jiT-f2-c4O"/>
+                            <constraint firstItem="YYl-Wr-U3F" firstAttribute="leading" secondItem="cSj-RE-mCj" secondAttribute="leading" id="lwE-7Q-5gj"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="directionsButton" destination="cQY-7N-XVP" id="txU-yV-DUd"/>
+                        <outlet property="distanceLabel" destination="Brv-9J-ZTC" id="cQZ-SW-OjV"/>
+                        <outlet property="groupLabel" destination="hNk-WL-D96" id="HVK-Aq-fuV"/>
+                        <outlet property="map" destination="q8a-ee-zof" id="VES-fz-Hoi"/>
+                        <outlet property="nameLabel" destination="mEY-qZ-Kgb" id="1SJ-US-EvI"/>
+                        <outlet property="timeLabel" destination="ALb-q3-lUb" id="fam-k1-O2u"/>
+                        <outlet property="urlButton" destination="1wy-1W-dwI" id="Gb7-Pl-3V1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GIU-ZO-grT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

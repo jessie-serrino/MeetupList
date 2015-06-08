@@ -13,14 +13,22 @@
 + (NSURL *) urlWithBaseString: (NSString *) baseURLString parameters: (NSDictionary *) parameters
 {
     NSString *trimmedBaseURL = [baseURLString stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];
+    NSArray *keyValuePairs = [NSURL keyValuePairs:parameters];
+    
+    NSString *parametersString = [keyValuePairs componentsJoinedByString:@"&"];
+    
+    NSString*urlString =[NSString stringWithFormat:@"%@?%@", trimmedBaseURL, parametersString];
+    return [NSURL URLWithString:urlString];
+}
+
++ (NSArray *) keyValuePairs: (NSDictionary *) parameters
+{
     NSMutableArray *keyValuePairs = [[NSMutableArray alloc] initWithCapacity:parameters.count];
     for(NSString *key in parameters){
         NSString *keyValuePair = [NSString stringWithFormat:@"%@=%@", key, parameters[key]];
         [keyValuePairs addObject:keyValuePair];
     }
-    NSString *parametersString = [keyValuePairs componentsJoinedByString:@"&"];
-    NSString*urlString =[NSString stringWithFormat:@"%@?%@", trimmedBaseURL, parametersString];
-    return [NSURL URLWithString:urlString];
+    return keyValuePairs;
 }
 
 @end
